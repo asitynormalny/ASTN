@@ -14,13 +14,14 @@
     }
     img {
       position: absolute;
-      max-width: 25%; /* obrázok sa škáluje podľa obrazovky */
+      width: 40vw;      /* 40% šírky obrazovky */
+      max-width: 300px; /* limit na veľkých obrazovkách */
       height: auto;
-      /* bez rámčeka a tieňa */
     }
   </style>
 </head>
 <body>
+  <!-- Tu vlož svoj obrázok, názov súboru musí presne sedieť -->
   <img src="kurva.jpg" id="logo" alt="Logo">
 
   <script>
@@ -52,6 +53,7 @@
 
     animate();
 
+    // responzivita pri zmene veľkosti obrazovky
     window.addEventListener("resize", () => {
       if (x + logo.offsetWidth > window.innerWidth) x = window.innerWidth - logo.offsetWidth;
       if (y + logo.offsetHeight > window.innerHeight) y = window.innerHeight - logo.offsetHeight;
@@ -59,4 +61,3 @@
   </script>
 </body>
 </html>
-

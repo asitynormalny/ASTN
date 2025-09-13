@@ -36,14 +36,24 @@
       }
     }
 
-    /* Štýl pre dátum */
-    #datum {
+    /* Footer s nápisom a dátumom */
+    #footer-text {
       position: absolute;
-      bottom: 10px;      /* vzdialenosť od spodného okraja */
+      bottom: 20px;       /* vzdialenosť od spodku */
       left: 50%;
       transform: translateX(-50%);
-      font-size: 20px;
+      text-align: center;  /* stredné zarovnanie obsahu */
       color: black;
+    }
+
+    #soon {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 5px; /* medzera medzi „soon !“ a dátumom */
+    }
+
+    #datum {
+      font-size: 20px;
     }
   </style>
 </head>
@@ -52,8 +62,11 @@
   <!-- Obrázok loga -->
   <img src="DWDasitynormalny.jpg" id="logo" alt="Logo">
 
-  <!-- Dátum -->
-  <div id="datum">SOON ! 01/01/2026</div>
+  <!-- Footer text -->
+  <div id="footer-text">
+    <div id="soon">soon !</div>
+    <div id="datum">01/01/2026</div>
+  </div>
 
   <script>
     const logo = document.getElementById("logo");
@@ -92,4 +105,3 @@
   </script>
 </body>
 </html>
-

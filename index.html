@@ -3,50 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DWD Animácia - Responzívna</title>
+  <title>DWD asitynormalny?</title>
   <style>
     body {
       margin: 0;
-      background: white; /* biele pozadie */
+      background: white; /* základná farba */
       overflow: hidden;
       height: 100vh;
       width: 100vw;
+      transition: background 0.3s; /* plynulý prechod farby */
     }
 
     img {
       position: absolute;
-      width: 70vw;      /* väčší obrázok o 10% */
-      max-width: 450px; /* limit pre veľké obrazovky */
+      width: 70vw;
+      max-width: 450px;
       height: auto;
+      cursor: pointer;
     }
 
-    /* Pre malé obrazovky (mobile) */
     @media (max-width: 600px) {
       img {
-        width: 85vw;      /* obrázok zaberie viac miesta na mobile */
-        max-width: 280px; /* limit pre malé obrazovky */
+        width: 85vw;
+        max-width: 280px;
       }
     }
 
-    /* Pre veľké obrazovky (PC) */
     @media (min-width: 1200px) {
       img {
-        width: 50vw;      /* menší obrázok v % */
-        max-width: 500px; /* limit pre veľké obrazovky */
+        width: 50vw;
+        max-width: 500px;
       }
     }
   </style>
 </head>
 <body>
+
+  <!-- Logo -->
   <img src="kurva.jpg" id="logo" alt="Logo">
+
+  <!-- Audio -->
+  <audio id="audio" src="tvoja_hudba.mp3"></audio>
 
   <script>
     const logo = document.getElementById("logo");
+    const audio = document.getElementById("audio");
+    const body = document.body;
 
     let x = 50;
     let y = 50;
     let dx = 2.5;
     let dy = 2.5;
+
+    // Reggae farby
+    const colors = ["green", "yellow", "red"];
+    let colorIndex = 0;
+
+    // Kliknutie na logo spustí hudbu
+    logo.onclick = () => {
+      audio.play();
+    };
 
     function animate() {
       const screenWidth = window.innerWidth;
@@ -57,9 +73,21 @@
       x += dx;
       y += dy;
 
-      // odrazenie od stien
-      if (x + logoWidth >= screenWidth || x <= 0) dx = -dx;
-      if (y + logoHeight >= screenHeight || y <= 0) dy = -dy;
+      // Odrazenie od stien
+      let hit = false;
+      if (x + logoWidth >= screenWidth || x <= 0) {
+        dx = -dx;
+        hit = true;
+      }
+      if (y + logoHeight >= screenHeight || y <= 0) {
+        dy = -dy;
+        hit = true;
+      }
+
+      if (hit) {
+        colorIndex = (colorIndex + 1) % colors.length;
+        body.style.background = colors[colorIndex];
+      }
 
       logo.style.left = x + "px";
       logo.style.top = y + "px";
@@ -69,7 +97,7 @@
 
     animate();
 
-    // responzivita pri zmene veľkosti obrazovky
+    // Responzivita pri zmene veľkosti obrazovky
     window.addEventListener("resize", () => {
       if (x + logo.offsetWidth > window.innerWidth) x = window.innerWidth - logo.offsetWidth;
       if (y + logo.offsetHeight > window.innerHeight) y = window.innerHeight - logo.offsetHeight;
@@ -77,4 +105,3 @@
   </script>
 </body>
 </html>
-

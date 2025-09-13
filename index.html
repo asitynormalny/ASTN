@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DWD asitynormalny?</title>
+  <title>DWD Animácia - Responzívna</title>
   <style>
     body {
       margin: 0;
@@ -12,16 +12,32 @@
       height: 100vh;
       width: 100vw;
     }
+
     img {
       position: absolute;
-      width: 60vw;      /* 40% šírky obrazovky */
-      max-width: 400px; /* limit na veľkých obrazovkách */
+      width: 70vw;      /* väčší obrázok o 10% */
+      max-width: 450px; /* limit pre veľké obrazovky */
       height: auto;
+    }
+
+    /* Pre malé obrazovky (mobile) */
+    @media (max-width: 600px) {
+      img {
+        width: 90vw;      /* obrázok zaberie viac miesta na mobile */
+        max-width: 300px; /* limit pre malé obrazovky */
+      }
+    }
+
+    /* Pre veľké obrazovky (PC) */
+    @media (min-width: 1200px) {
+      img {
+        width: 50vw;      /* menší obrázok v % */
+        max-width: 500px; /* limit pre veľké obrazovky */
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Tu vlož svoj obrázok, názov súboru musí presne sedieť -->
   <img src="kurva.jpg" id="logo" alt="Logo">
 
   <script>
@@ -61,4 +77,3 @@
   </script>
 </body>
 </html>
-

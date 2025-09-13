@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DWD Animácia s hudbou</title>
+  <title>DWD asitynormalny?</title>
   <style>
     body {
       margin: 0;
@@ -15,10 +15,10 @@
 
     img {
       position: absolute;
-      width: 70vw;      /* veľkosť obrázka */
+      width: 70vw;      
       max-width: 450px;
       height: auto;
-      cursor: pointer;  /* indikátor kliknutia */
+      cursor: default;
     }
 
     @media (max-width: 600px) {
@@ -41,22 +41,13 @@
   <!-- Obrázok loga -->
   <img src="kurva.jpg" id="logo" alt="Logo">
 
-  <!-- Audio súbor -->
-  <audio id="audio" src="adioastn.mp3" loop></audio>
-
   <script>
     const logo = document.getElementById("logo");
-    const audio = document.getElementById("audio");
 
     let x = 50;
     let y = 50;
     let dx = 2.5;
     let dy = 2.5;
-
-    // Kliknutie na logo spustí hudbu
-    logo.onclick = () => {
-      audio.play();
-    };
 
     function animate() {
       const screenWidth = window.innerWidth;
@@ -87,5 +78,3 @@
   </script>
 </body>
 </html>
-
-

@@ -7,33 +7,27 @@
   <style>
     body {
       margin: 0;
-      background: white;
+      background: white; /* biele pozadie */
       overflow: hidden;
       height: 100vh;
       width: 100vw;
     }
     img {
       position: absolute;
-      max-width: 25%; /* veľkosť obrázka podľa obrazovky */
+      max-width: 25%; /* obrázok sa škáluje podľa obrazovky */
       height: auto;
-      border: 2px solid #000; /* jemný rámček */
-      border-radius: 8px; /* zaoblené rohy */
-      box-shadow: 0 0 10px rgba(0,0,0,0.3); /* jemný tieň */
+      /* bez rámčeka a tieňa */
     }
   </style>
 </head>
 <body>
-  <!-- Tu vlož svoj obrázok, názov súboru musí presne sedieť -->
   <img src="kurva.jpg" id="logo" alt="Logo">
 
   <script>
     const logo = document.getElementById("logo");
 
-    // počiatočné pozície
     let x = 50;
     let y = 50;
-
-    // rýchlosť pohybu (pixely za frame)
     let dx = 2.5;
     let dy = 2.5;
 
@@ -58,7 +52,6 @@
 
     animate();
 
-    // responzivita pri zmene veľkosti obrazovky
     window.addEventListener("resize", () => {
       if (x + logo.offsetWidth > window.innerWidth) x = window.innerWidth - logo.offsetWidth;
       if (y + logo.offsetHeight > window.innerHeight) y = window.innerHeight - logo.offsetHeight;

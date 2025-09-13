@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DWD asitynormalny?</title>
+  <title>DWD Animácia s hudbou</title>
   <style>
     body {
       margin: 0;
-      background: white; /* základná farba */
+      background: white;
       overflow: hidden;
       height: 100vh;
       width: 100vw;
-      transition: background 0.3s; /* plynulý prechod farby */
     }
 
     img {
       position: absolute;
-      width: 70vw;
+      width: 70vw;      /* veľkosť obrázka */
       max-width: 450px;
       height: auto;
-      cursor: pointer;
+      cursor: pointer;  /* indikátor kliknutia */
     }
 
     @media (max-width: 600px) {
@@ -39,25 +38,20 @@
 </head>
 <body>
 
-  <!-- Logo -->
+  <!-- Obrázok loga -->
   <img src="kurva.jpg" id="logo" alt="Logo">
 
-  <!-- Audio -->
+  <!-- Audio súbor -->
   <audio id="audio" src="tvoja_hudba.mp3"></audio>
 
   <script>
     const logo = document.getElementById("logo");
     const audio = document.getElementById("audio");
-    const body = document.body;
 
     let x = 50;
     let y = 50;
     let dx = 2.5;
     let dy = 2.5;
-
-    // Reggae farby
-    const colors = ["green", "yellow", "red"];
-    let colorIndex = 0;
 
     // Kliknutie na logo spustí hudbu
     logo.onclick = () => {
@@ -74,20 +68,8 @@
       y += dy;
 
       // Odrazenie od stien
-      let hit = false;
-      if (x + logoWidth >= screenWidth || x <= 0) {
-        dx = -dx;
-        hit = true;
-      }
-      if (y + logoHeight >= screenHeight || y <= 0) {
-        dy = -dy;
-        hit = true;
-      }
-
-      if (hit) {
-        colorIndex = (colorIndex + 1) % colors.length;
-        body.style.background = colors[colorIndex];
-      }
+      if (x + logoWidth >= screenWidth || x <= 0) dx = -dx;
+      if (y + logoHeight >= screenHeight || y <= 0) dy = -dy;
 
       logo.style.left = x + "px";
       logo.style.top = y + "px";

@@ -71,8 +71,7 @@
 </head>
 <body>
 
-  <!-- Obrázok loga -->
-  <img src="DWDasitynormalny.jpg" id="logo" alt="Logo">
+
 
   <!-- Footer text -->
   <div id="footer-text">
@@ -80,40 +79,3 @@
     <div id="datum">13/12/2025</div>
   </div>
 
-  <script>
-    const logo = document.getElementById("logo");
-
-    let x = 50;
-    let y = 50;
-    let dx = 2.5;
-    let dy = 2.5;
-
-    function animate() {
-      const screenWidth = window.innerWidth;
-      const screenHeight = window.innerHeight;
-      const logoWidth = logo.offsetWidth;
-      const logoHeight = logo.offsetHeight;
-
-      x += dx;
-      y += dy;
-
-      // Odrazenie od stien
-      if (x + logoWidth >= screenWidth || x <= 0) dx = -dx;
-      if (y + logoHeight >= screenHeight || y <= 0) dy = -dy;
-
-      logo.style.left = x + "px";
-      logo.style.top = y + "px";
-
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    // Responzivita pri zmene veľkosti obrazovky
-    window.addEventListener("resize", () => {
-      if (x + logo.offsetWidth > window.innerWidth) x = window.innerWidth - logo.offsetWidth;
-      if (y + logo.offsetHeight > window.innerHeight) y = window.innerHeight - logo.offsetHeight;
-    });
-  </script>
-</body>
-</html>
